@@ -1,14 +1,14 @@
 pipeline {
     environment {
-        registryCredential = 'AbdullahDockerCredentials'
-        IMAGE_NAME = 'mianabdullah/mlops-assignment1'
+        registryCredential = 'docker'
+        IMAGE_NAME = 'humnaarshad19/mlops_a1'
         TAG = 'latest' 
     }
     agent any
     stages {
         stage('Cloning Git Repository') {
             steps {
-                git branch: 'main', url: 'https://github.com/abdullah117765/MlopsAssignment1.git'
+                git branch: 'main', url: 'https://github.com/HumnaArshad19/mlops_A1.git'
             }
         }
         stage('Building our image') {
@@ -31,7 +31,7 @@ pipeline {
     post {
         success {
             emailext(
-                to: 'axiomshah@gmail.com',
+                to: 'i202383@nu.edu.pk',
                 subject: 'Build Successful ',
                 body: 'The docker image successfully pushed to Dockerhub! Well Done!'
             )
